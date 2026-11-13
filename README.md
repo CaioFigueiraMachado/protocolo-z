@@ -298,7 +298,10 @@ curl.exe -X POST "$URL/rest/v1/rpc/_add_item" `
 # -> permission denied for function _add_item
 ```
 
-O script `supabase/tests/teste_seguranca.sql` faz esses e outros testes (40 verificações) direto no banco.
+Testes automatizados direto no banco (rode no SQL Editor):
+
+- `supabase/tests/teste_seguranca.sql`: 40 verificações de inventário, reputação, facção, abrigos, expedições, alertas e trocas (incluindo a atomicidade).
+- `supabase/tests/teste_storage.sql`: 15 verificações do Storage. Cada jogador só grava, edita ou apaga arquivos em `avatars/<uid>/` e `shelters/<uid>/`, e os buckets só aceitam imagens de até 5 MB. Esse script desfaz tudo ao terminar: o relatório aparece como mensagem de erro de propósito.
 
 ---
 
